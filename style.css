@@ -1,0 +1,404 @@
+@import url("https://fonts.googleapis.com");
+@import url("https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700;800&family=Fira+Code:wght@400;600&display=swap");
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css");
+   
+    :root {
+      --bg-main: #f4f7f4;
+      --panel-bg: #ffffff;
+      --primary-green: #2d5a3f;
+      --accent-green: #40825b;
+      --light-green: #eaf2eb;
+      --wood-border: #d4a373;
+      --text-dark: #2c3e50;
+      --text-muted: #6c757d;
+      --code-bg: #1e293b;
+      --code-text: #e2e8f0;
+      --board-bg: #fefae0;
+      --board-pattern: #f4f1de;
+      --pink-flower: #ff85a1;
+      --yellow-flower: #ffb703;
+      --purple-flower: #9d4edd;
+      --radius-lg: 16px;
+      --radius-md: 10px;
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Assistant', sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-main);
+      color: var(--text-dark);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background-image: radial-gradient(var(--light-green) 2px, transparent 2px);
+      background-size: 24px 24px;
+    }
+
+    /* Navbar Header */
+    header {
+      background: var(--primary-green);
+      color: white;
+      padding: 12px 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-icon {
+      font-size: 28px;
+      color: #ffd166;
+    }
+
+    .brand h1 {
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+
+    .level-stepper {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,0.12);
+      padding: 6px 16px;
+      border-radius: 30px;
+    }
+
+    .level-btn {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: none;
+      background: rgba(255, 255, 255, 0.2);
+      color: white;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .level-btn:hover {
+      background: rgba(255, 255, 255, 0.4);
+    }
+
+    .level-btn.active {
+      background: #ffd166;
+      color: var(--primary-green);
+      box-shadow: 0 0 10px rgba(255, 209, 102, 0.5);
+    }
+
+    /* App Container Layout */
+    main {
+      flex: 1;
+      max-width: 1350px;
+      width: 100%;
+      margin: 20px auto;
+      padding: 0 20px;
+      display: grid;
+      grid-template-columns: 420px 1fr;
+      gap: 24px;
+    }
+
+    @media (max-width: 1024px) {
+      main {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Left Control Sidebar */
+    .sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .card {
+      background: var(--panel-bg);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(0,0,0,0.04);
+    }
+
+    .instructions-card h2 {
+      color: var(--primary-green);
+      font-size: 20px;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .level-indicator {
+      font-size: 14px;
+      color: var(--accent-green);
+      font-weight: 700;
+      background: var(--light-green);
+      padding: 4px 10px;
+      border-radius: 12px;
+      display: inline-block;
+      margin-bottom: 12px;
+    }
+
+    .instructions-card p {
+      font-size: 15px;
+      line-height: 1.6;
+      color: #4a5568;
+    }
+
+    /* CSS Code Editor Panel */
+    .code-editor {
+      background: var(--code-bg);
+      border-radius: var(--radius-lg);
+      padding: 20px;
+      color: var(--code-text);
+      font-family: 'Fira Code', monospace;
+      box-shadow: var(--shadow);
+      position: relative;
+      direction: ltr;
+      text-align: left;
+    }
+
+    .code-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      padding-bottom: 10px;
+      margin-bottom: 16px;
+      color: #94a3b8;
+      font-size: 13px;
+    }
+
+    .code-line {
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      font-size: 14px;
+    }
+
+    .code-indent {
+      padding-left: 20px; 
+    }
+
+    .css-selector { color: #f43f5e; font-weight: bold; }
+    .css-property { color: #38bdf8; }
+    .css-punctuation { color: #94a3b8; }
+
+    select.css-input {
+      background: #0f172a;
+      color: #f1f5f9;
+      border: 1px solid #334155;
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-family: 'Fira Code', monospace;
+      font-size: 13px;
+      outline: none;
+      cursor: pointer;
+      transition: border 0.2s;
+      direction: ltr; 
+    }
+
+    select.css-input:focus {
+      border-color: #38bdf8;
+    }
+
+    /* Action Buttons */
+    .action-bar {
+      display: flex;
+      gap: 12px;
+      margin-top: 10px;
+      direction: rtl; 
+    }
+
+    .btn {
+      flex: 1;
+      padding: 12px 18px;
+      border-radius: var(--radius-md);
+      border: none;
+      font-weight: 700;
+      font-size: 15px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: all 0.2s ease;
+    }
+
+    .btn-primary {
+      background: var(--accent-green);
+      color: white;
+      box-shadow: 0 4px 12px rgba(64, 130, 91, 0.3);
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-green);
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      background: #e2e8f0;
+      color: #475569;
+    }
+
+    .btn-secondary:hover {
+      background: #cbd5e1;
+    }
+
+    /* Game Board Section - REQUIRED FIXED DIMENSIONS */
+    .game-viewport {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Fixed Board Wrapper to ensure fixed size logic regardless of screen */
+    .board-wrapper {
+      position: relative;
+      width: 600px;
+      height: 480px;
+      background: var(--board-bg);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow);
+      border: 12px solid #d4a373; /* Wood shelf frame */
+      overflow: hidden;
+      background-image: 
+        linear-gradient(90deg, rgba(212, 163, 115, 0.1) 1px, transparent 1px),
+        linear-gradient(rgba(212, 163, 115, 0.1) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+
+    @media (max-width: 680px) {
+      .board-wrapper {
+        transform: scale(0.85);
+        margin: -35px 0;
+      }
+    }
+
+    /* Layer 1: Target Layer (Vases) */
+    .vases-layer {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* Layer 2: Player Interactive Flex Layer (Flowers) */
+    .flowers-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      padding: 20px;
+      display: flex;
+      /* Dynamic properties will be set via controls */
+      justify-content: flex-start;
+      align-items: flex-start;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      z-index: 2;
+      transition: all 0.3s ease;
+    }
+
+    /* Flower & Vase Items */
+    .vase-item, .flower-item {
+      width: 90px;
+      height: 90px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      transition: transform 0.3s ease;
+    }
+
+    .vase-item svg {
+      width: 75px;
+      height: 75px;
+      opacity: 0.55;
+      filter: drop-shadow(0 4px 6px rgba(0,0,0,0.05));
+    }
+
+    .flower-item {
+      cursor: pointer;
+      filter: drop-shadow(0 8px 12px rgba(0,0,0,0.15));
+    }
+
+    .flower-item svg {
+      width: 80px;
+      height: 80px;
+      animation: gentle-sway 3s ease-in-out infinite alternate;
+    }
+
+    @keyframes gentle-sway {
+      0% { transform: rotate(-3deg); }
+      100% { transform: rotate(3deg); }
+    }
+
+    /* Status Banner / Feedback Toast */
+    .feedback-banner {
+      margin-top: 16px;
+      padding: 12px 20px;
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 700;
+      font-size: 15px;
+      width: 600px;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: all 0.3s ease;
+    }
+
+    .feedback-banner.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .feedback-success {
+      background: #dcfce7;
+      color: #15803d;
+      border: 1px solid #bbf7d0;
+    }
+
+    .feedback-error {
+      background: #fee2e2;
+      color: #b91c1c;
+      border: 1px solid #fecaca;
+    }
+
+    /* Footer Info */
+    footer {
+      text-align: center;
+      padding: 16px;
+      color: var(--text-muted);
+      font-size: 14px;
+      margin-top: auto;
+    }

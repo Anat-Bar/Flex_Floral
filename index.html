@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flex Floral - משחק ללימוד Flexbox</title>
+  <link rel="stylesheet" href="./style.css">
+  
+</head>
+<body>
+
+  <!-- Top Header Navigation -->
+  <header>
+    <div class="brand">
+      <i class="fa-solid font-awesome-flower brand-icon fa-leaf"></i>
+      <h1>Flex Floral</h1>
+    </div>
+
+    <!-- Stage Progress Bar -->
+    <div class="level-stepper">
+      <span style="font-size: 14px; margin-left: 8px; font-weight: 600;">שלב:</span>
+      <button class="level-btn active">1</button>
+      <button class="level-btn">2</button>
+      <button class="level-btn">3</button>
+      <button class="level-btn">4</button>
+      <button class="level-btn">5</button>
+      <button class="level-btn">6</button>
+    </div>
+  </header>
+
+  <!-- Main Game Content -->
+  <main>
+
+    <!-- Sidebar Control Panel -->
+    <section class="sidebar">
+      
+      <!-- Stage Instructions Card -->
+      <article class="card instructions-card">
+        <span class="level-indicator">שלב 1 מתוך 6</span>
+        <h2><i class="fa-solid fa-seedling"></i> סדרו את הפרחים באגרטלים</h2>
+        <p id="level-description">
+          עזרו לפרחים להגיע לאגרטלים שלהם! השתמשו במאפיין <code>justify-content</code> כדי לסדר את הפרחים במרכז הלוח בכיוון אופקי.
+        </p>
+      </article>
+
+      <!-- Live CSS Editor Card -->
+      <article class="code-editor" dir="ltr">
+        <div class="code-header">
+          <span><i class="fa-solid fa-code"></i> style.css</span>
+          <span>Flexbox Controls</span>
+        </div>
+
+        <div class="code-line">
+          <span class="css-selector">.flower-garden</span> <span class="css-punctuation">{</span>
+        </div>
+
+        <div class="code-line code-indent">
+          <span class="css-property">display</span><span class="css-punctuation">:</span>
+          <span style="color: #a7f3d0; font-weight: bold;">flex</span><span class="css-punctuation">;</span>
+        </div>
+
+        <!-- Property 1: flex-direction -->
+        <div class="code-line code-indent">
+          <span class="css-property">flex-direction</span><span class="css-punctuation">:</span>
+          <select id="select-flex-direction" class="css-input">
+            <option value="row" selected>row</option>
+            <option value="row-reverse">row-reverse</option>
+            <option value="column">column</option>
+            <option value="column-reverse">column-reverse</option>
+          </select>
+          <span class="css-punctuation">;</span>
+        </div>
+
+        <!-- Property 2: justify-content -->
+        <div class="code-line code-indent">
+          <span class="css-property">justify-content</span><span class="css-punctuation">:</span>
+          <select id="select-justify-content" class="css-input">
+            <option value="flex-start" selected>flex-start</option>
+            <option value="flex-end">flex-end</option>
+            <option value="center">center</option>
+            <option value="space-between">space-between</option>
+            <option value="space-around">space-around</option>
+            <option value="space-evenly">space-evenly</option>
+          </select>
+          <span class="css-punctuation">;</span>
+        </div>
+
+        <!-- Property 3: align-items -->
+        <div class="code-line code-indent">
+          <span class="css-property">align-items</span><span class="css-punctuation">:</span>
+          <select id="select-align-items" class="css-input">
+            <option value="flex-start" selected>flex-start</option>
+            <option value="flex-end">flex-end</option>
+            <option value="center">center</option>
+            <option value="stretch">stretch</option>
+            <option value="baseline">baseline</option>
+          </select>
+          <span class="css-punctuation">;</span>
+        </div>
+
+        <!-- Property 4: flex-wrap -->
+        <div class="code-line code-indent">
+          <span class="css-property">flex-wrap</span><span class="css-punctuation">:</span>
+          <select id="select-flex-wrap" class="css-input">
+            <option value="nowrap" selected>nowrap</option>
+            <option value="wrap">wrap</option>
+            <option value="wrap-reverse">wrap-reverse</option>
+          </select>
+          <span class="css-punctuation">;</span>
+        </div>
+
+        <div class="code-line">
+          <span class="css-punctuation">}</span>
+        </div>
+
+        <!-- Controls Action Buttons -->
+        <div class="action-bar">
+          <button class="btn btn-primary" id="btn-check">
+            <i class="fa-solid fa-circle-check"></i> בדוק פתרון
+          </button>
+          <button class="btn btn-secondary" id="btn-reset">
+            <i class="fa-solid fa-rotate-right"></i> איפוס
+          </button>
+        </div>
+      </article>
+
+    </section>
+
+    <!-- Game Canvas Viewport -->
+    <section class="game-viewport">
+      
+      <!-- Fixed Size Board Container (600x480) -->
+      <div class="board-wrapper">
+        
+        <!-- Target Layer (Vases Target Positions) -->
+        <div class="vases-layer" id="vases-layer">
+          
+          <!-- Vase 1 (Pink) -->
+          <div class="vase-item">
+            <svg viewBox="0 0 100 100">
+              <path d="M35,20 L65,20 L60,45 L75,80 C75,90 65,95 50,95 C35,95 25,90 25,80 L40,45 Z" fill="#ff85a1" stroke="#d4a373" stroke-width="3"/>
+            </svg>
+          </div>
+
+          <!-- Vase 2 (Yellow) -->
+          <div class="vase-item">
+            <svg viewBox="0 0 100 100">
+              <path d="M35,20 L65,20 L60,45 L75,80 C75,90 65,95 50,95 C35,95 25,90 25,80 L40,45 Z" fill="#ffb703" stroke="#d4a373" stroke-width="3"/>
+            </svg>
+          </div>
+
+          <!-- Vase 3 (Purple) -->
+          <div class="vase-item">
+            <svg viewBox="0 0 100 100">
+              <path d="M35,20 L65,20 L60,45 L75,80 C75,90 65,95 50,95 C35,95 25,90 25,80 L40,45 Z" fill="#9d4edd" stroke="#d4a373" stroke-width="3"/>
+            </svg>
+          </div>
+
+        </div>
+
+        <!-- Dynamic Player Layer (Controlled Flex Container) -->
+        <div class="flowers-container" id="flowers-container">
+          
+          <!-- Flower 1 -->
+          <div class="flower-item">
+            <svg viewBox="0 0 100 100">
+              <circle cx="50" cy="50" r="12" fill="#ffd166"/>
+              <circle cx="50" cy="25" r="14" fill="#ff85a1"/>
+              <circle cx="50" cy="75" r="14" fill="#ff85a1"/>
+              <circle cx="25" cy="50" r="14" fill="#ff85a1"/>
+              <circle cx="75" cy="50" r="14" fill="#ff85a1"/>
+            </svg>
+          </div>
+
+          <!-- Flower 2 -->
+          <div class="flower-item">
+            <svg viewBox="0 0 100 100">
+              <circle cx="50" cy="50" r="12" fill="#52b788"/>
+              <circle cx="50" cy="25" r="14" fill="#ffb703"/>
+              <circle cx="50" cy="75" r="14" fill="#ffb703"/>
+              <circle cx="25" cy="50" r="14" fill="#ffb703"/>
+              <circle cx="75" cy="50" r="14" fill="#ffb703"/>
+            </svg>
+          </div>
+
+          <!-- Flower 3 -->
+          <div class="flower-item">
+            <svg viewBox="0 0 100 100">
+              <circle cx="50" cy="50" r="12" fill="#ffd166"/>
+              <circle cx="50" cy="25" r="14" fill="#9d4edd"/>
+              <circle cx="50" cy="75" r="14" fill="#9d4edd"/>
+              <circle cx="25" cy="50" r="14" fill="#9d4edd"/>
+              <circle cx="75" cy="50" r="14" fill="#9d4edd"/>
+            </svg>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- Feedback Toast Banner -->
+      <div class="feedback-banner feedback-success show" id="feedback-toast">
+        <i class="fa-solid fa-wand-magic-sparkles"></i>
+        <span>שנו את המאפיינים בעורך הקוד כדי להזיז את הפרחים!</span>
+      </div>
+
+    </section>
+
+  </main>
+  <script src="./script.js"></script>
+</body>
+</html>
