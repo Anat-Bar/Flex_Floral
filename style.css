@@ -327,39 +327,43 @@
       transition: all 0.3s ease;
     }
 
-    /* Flower & Vase Items */
-    .vase-item, .flower-item {
-      width: 90px;
-      height: 90px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      transition: transform 0.3s ease;
-    }
+   /* Flower & Vase Items Container Alignment */
+.vase-item, .flower-item {
+  width: 90px;
+  height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: transform 0.3s ease;
+}
 
-    .vase-item svg {
-      width: 75px;
-      height: 75px;
-      opacity: 0.55;
-      filter: drop-shadow(0 4px 6px rgba(0,0,0,0.05));
-    }
+/* Vases Base Layer */
+.vase-item svg {
+  width: 75px;
+  height: 75px;
+  opacity: 0.85;
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+}
 
-    .flower-item {
-      cursor: pointer;
-      filter: drop-shadow(0 8px 12px rgba(0,0,0,0.15));
-    }
+/* Flower Layer - Positional Shift to Sit Directly in the Vase Opening */
+.flower-item {
+  cursor: pointer;
+  filter: drop-shadow(0 8px 12px rgba(0, 0, 0, 0.15));
+}
 
-    .flower-item svg {
-      width: 80px;
-      height: 80px;
-      animation: gentle-sway 3s ease-in-out infinite alternate;
-    }
+.flower-item svg {
+  width: 65px;
+  height: 65px;
+  /* Shift flower center upward to align with the vase opening */
+  transform: translateY(-22px);
+  animation: gentle-sway 3s ease-in-out infinite alternate;
+}
 
-    @keyframes gentle-sway {
-      0% { transform: rotate(-3deg); }
-      100% { transform: rotate(3deg); }
-    }
+@keyframes gentle-sway {
+  0% { transform: translateY(-22px) rotate(-3deg); }
+  100% { transform: translateY(-22px) rotate(3deg); }
+}
 
     /* Status Banner / Feedback Toast */
     .feedback-banner {
@@ -402,3 +406,61 @@
       font-size: 14px;
       margin-top: auto;
     }
+    /* Styling for completed level buttons in navbar */
+.level-btn.completed {
+  background: #22c55e;
+  color: white;
+  position: relative;
+}
+
+.level-btn.completed::after {
+  content: "✓";
+  font-size: 10px;
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  background: #15803d;
+  color: white;
+  border-radius: 50%;
+  width: 14px;
+  height: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Button inside Feedback Toast */
+.btn-next-level {
+  background: #15803d;
+  color: white;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+  margin-right: 12px;
+  transition: background 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.btn-next-level:hover {
+  background: #166534;
+}
+
+/* Changing the vases and flowers size on order for level 6 to work well the the Wrap*/
+.flowers-container.wrap-level .flower-item,
+.vases-layer.wrap-level .vase-item {
+  width: 45% !important;
+  min-width: 45% !important;
+  flex-basis: 45% !important;
+  flex-shrink: 0 !important;
+  height: 120px !important; 
+}
+
+.flowers-container.wrap-level .flower-item svg,
+.vases-layer.wrap-level .vase-item svg {
+  width: 80px;
+  height: 80px;
+}
