@@ -9,14 +9,13 @@
 </head>
 <body>
 
-  <!-- Top Header Navigation -->
   <header>
     <div class="brand">
       <i class="fa-solid font-awesome-flower brand-icon fa-leaf"></i>
       <h1>Flex Floral</h1>
     </div>
 
-    <!-- Stage Progress Bar -->
+    <!-- Levels Progress Bar -->
     <div class="level-stepper">
       <span style="font-size: 14px; margin-left: 8px; font-weight: 600;">שלב:</span>
       <button class="level-btn active">1</button>
@@ -28,13 +27,12 @@
     </div>
   </header>
 
-  <!-- Main Game Content -->
   <main>
 
     <!-- Sidebar Control Panel -->
     <section class="sidebar">
       
-      <!-- Stage Instructions Card -->
+      <!-- Levels Instructions Card -->
       <article class="card instructions-card">
         <span class="level-indicator">שלב 1 מתוך 6</span>
         <h2><i class="fa-solid fa-seedling"></i> סדרו את הפרחים באגרטלים</h2>
@@ -59,8 +57,8 @@
           <span style="color: #a7f3d0; font-weight: bold;">flex</span><span class="css-punctuation">;</span>
         </div>
 
-        <!-- Property 1: flex-direction -->
-        <div class="code-line code-indent">
+                <!-- Property 1: flex-direction -->
+        <div class="code-line code-indent" data-prop="flex-direction">
           <span class="css-property">flex-direction</span><span class="css-punctuation">:</span>
           <select id="select-flex-direction" class="css-input">
             <option value="row" selected>row</option>
@@ -72,7 +70,7 @@
         </div>
 
         <!-- Property 2: justify-content -->
-        <div class="code-line code-indent">
+        <div class="code-line code-indent" data-prop="justify-content">
           <span class="css-property">justify-content</span><span class="css-punctuation">:</span>
           <select id="select-justify-content" class="css-input">
             <option value="flex-start" selected>flex-start</option>
@@ -86,7 +84,7 @@
         </div>
 
         <!-- Property 3: align-items -->
-        <div class="code-line code-indent">
+        <div class="code-line code-indent" data-prop="align-items">
           <span class="css-property">align-items</span><span class="css-punctuation">:</span>
           <select id="select-align-items" class="css-input">
             <option value="flex-start" selected>flex-start</option>
@@ -99,7 +97,7 @@
         </div>
 
         <!-- Property 4: flex-wrap -->
-        <div class="code-line code-indent">
+        <div class="code-line code-indent" data-prop="flex-wrap">
           <span class="css-property">flex-wrap</span><span class="css-punctuation">:</span>
           <select id="select-flex-wrap" class="css-input">
             <option value="nowrap" selected>nowrap</option>
@@ -198,10 +196,10 @@
 
       </div>
 
-      <!-- Feedback Toast Banner -->
+      <!-- Feedback Banner -->
       <div class="feedback-banner feedback-success show" id="feedback-toast">
         <i class="fa-solid fa-wand-magic-sparkles"></i>
-        <span>שנו את המאפיינים בעורך הקוד כדי להזיז את הפרחים!</span>
+        <span>שנו את המאפיינים בקוד כדי להזיז את הפרחים!</span>
       </div>
 
     </section>
